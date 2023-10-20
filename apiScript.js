@@ -13,9 +13,9 @@ async function climatizando(Latitude, Longitude) {
 
     city.innerText = `${data.name}`
     temp.innerHTML = `${parseInt(data.main.temp) - 273} <span>°C</span>`
-    humidity.innerHTML = `${parseInt(data.main.humidity)}%`
+    humidity.innerHTML = `${parseInt(data.main.humidity)}% de Umidade`
     wind.innerHTML = `${parseInt(data.wind.speed)}<span>m/s</span>`
-    description.innerHTML = `${data.weather[0].description}`
+    description.innerHTML = `Tempo ${data.weather[0].description}`
 
     return
 }

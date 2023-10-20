@@ -1,24 +1,41 @@
 'use strict'
 
-let now = new Date()
-let hours = now.getHours()
+const canvas = document.getElementById('canvas')
+const ctx = canvas.getContext('2d')
 
-const sun = document.querySelector('.circulo')
-const body = document.querySelector('body')
+function drawCircle(x, y, radius) {
+    ctx.beginPath()
+    ctx.arc(x, y, radius, 0, Math.PI * 2)
+    ctx.fillStyle = 'orange'
+    ctx.fill()
+    ctx.closePath()
+}
 
-let arfunc = () =>
-    hours > 6 && hours < 12
-        ? (sun.style.top = '65vh')
-        : hours > 12 && hours < 16
-        ? (sun.style.top = '10vh')
-        : hours > 16 && hours < 17
-        ? (sun.style.top = '-40vh')
-        : sun
-arfunc()
+function updateSpherePosition() {
+    const now = new Date()
+    const hours = now.getHours()
+    const minutes = now.getMinutes()
 
-hours > 17 && hours < 24
-    ? (sun.style.background = 'linear-gradient(#f3f4f5,#58626d)')
-    : sun
-hours > 17 && hours < 24
-    ? (body.style.background = 'background: #101e38;')
-    : sun
+    const centerX = canvas.width / 2
+    const centerY = canvas.height / 2
+    const radius = 100
+
+    // Calculate the angle based on the time of day
+    const angle =
+        (2 * Math.PI * (hours % 12)) / 12 + (2 * Math.PI * (minutes / 60)) / 12
+
+    // Calculate the vertical position of the sphere
+    const x = centerX
+    const y = centerY + radius * Math.sin(angle)
+
+    // Clear the canvas
+    ctx.clearRect(0, 0, canvas.width, canvas.height)
+
+    // Draw the sphere at the new position
+    drawCircle(x, y, 280)
+
+    // Schedule the next update
+    setTimeout(updateSpherePosition, 1000) // Update every second
+}
+
+updateSpherePosition() // Start the animation

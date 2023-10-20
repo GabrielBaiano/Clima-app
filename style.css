@@ -10,16 +10,6 @@ body {
     overflow-y: hidden;
 }
 
-.circulo {
-    border-radius: 50%;
-    width: 70vh;
-    height: 70vh;
-    background: linear-gradient(#ffee56, #e9974b);
-    position: absolute;
-    left: -100px;
-    top: 45vh;
-}
-
 /* custom waves! */
 
 .waves {
@@ -88,13 +78,20 @@ body {
 
 .container-clima {
     position: absolute;
-    top: 30vh;
-    left: 80vh;
+    top: 15vh;
+    left: 100vh;
     font-family: 'Bebas Neue', sans-serif;
     color: rgb(255, 255, 255);
     font-size: 20px;
 }
 
 .city {
+    font-size: 100px;
+}
+
+.temp {
+    font-size: 80px;
+}
+.description {
     font-size: 80px;
 }
